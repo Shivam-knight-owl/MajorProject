@@ -1,0 +1,62 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+        <div class="row">
+            <div class="col-md-8 offset-2 mt-2">
+                <h2>Create a New Listing</h2>
+                <br>
+                <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label"><b>Title</b></label>
+                        <input type="text" name="listing[title]" placeholder="Add a Title" class="form-control"
+                        autocomplete="off" required>
+                        <div class="valid-feedback">Title Looks Cool!</div>
+                        <div class="invalid-feedback">Title should be valid</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label"><b>Description</b></label>
+                        <textarea name="listing[description]" placeholder="Add Description" cols="20" rows="3"
+                            class="form-control" autocomplete="off" required></textarea>
+                            <div class="invalid-feedback">Please write a short description</div>
+                    </div>
+
+                    <!-- <div class="mb-3">
+                        <label for="image" class="form-label"><b>Image Link</b></label>
+                        <input type="text" name="listing[image]" placeholder="Add image URL/Link" class="form-control"
+                            autocomplete="off" >
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="image" class="form-label"><b>Upload Listing Image</b></label>
+                        <input type="file" name="listing[image]" placeholder="Add image URL/Link" class="form-control">
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label"><b>Price</b></label>
+                            <input type="text" name="listing[price]" placeholder="Add Price" class="form-control"
+                                autocomplete="off" required>
+                                <div class="invalid-feedback">Price should be valid</div>
+                        </div>
+    
+                        <div class="mb-3 col-md-8">
+                            <label for="location" class="form-label"><b>Location</b></label>
+                            <input type="text" name="listing[location]" placeholder="Add Location" class="form-control"
+                                autocomplete="off" required>
+                                <div class="invalid-feedback">Location should be valid</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="country" class="form-label"><b>Country</b></label>
+                        <input type="text" name="listing[country]" placeholder="Add Country" class="form-control"
+                            autocomplete="off" required>
+                            <div class="invalid-feedback">Country name should be valid</div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-dark add-btn mt-3">Add</button>
+                    </div>
+                    
+                    <br>
+                </form>
+            </div>
+        </div>

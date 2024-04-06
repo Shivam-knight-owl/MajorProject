@@ -1,0 +1,205 @@
+body{
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+/* Navbar */
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+    margin-bottom: 1.5rem !important;
+}
+.navbar-brand{
+    margin-top: -0.3rem !important;
+    color: #fe424d !important;
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    /* margin-left: 1rem; */
+}
+.navbar-brand i:hover{
+    animation: spin 2s linear infinite;
+}
+.navbar-brand i:hover{
+    animation: spin 2s linear infinite;
+}
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    margin-left: 0.5rem;
+    color:#222222 !important;
+    font-size: 1.05rem !important;
+    font-weight: 550 !important;
+}
+.nav-link:hover{
+    color: #fe424d !important;
+}
+#btnSwitch{
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: black;
+}
+#text-span{
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5rem;
+}
+/* Footer */
+.f-info-links a{
+    color: #222222;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    color: #fe424d;
+}
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-brand{
+    color: black;
+}
+.f-info-brand:hover{
+    color: #fe424d;
+    font-weight: 700;
+    cursor: pointer;
+}
+.f-info-socials i{
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    color: black;
+}
+.f-info-socials .fb:hover{
+    color: #316FF6;
+}
+.f-info-socials .ig:hover{
+    color: #ff45b5;
+}
+.f-info-socials .li:hover{
+    color:  #0077b5 ;
+}
+.f-info{
+    height: 8rem;
+    background-color: #e9e7e7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+}
+
+/* Cards */
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text{
+    font-weight: 400 !important;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+/* Card Effect */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.185;
+    background-color: white;
+}
+.form-control:focus {
+    border-color: rgb(74, 114, 248) !important;
+    box-shadow: 0 0 0 0.2rem rgba(36, 116, 255, 0.4) !important;
+} 
+/* Add Button in New.ejs page*/
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+/* Edit page */
+.edit-btn{
+    background-color: rgb(254, 66, 77) !important;
+    border: none !important;
+}
+/* Show Page */
+.show-img{
+    height: 30vh;
+}
+.btns{
+    display: flex;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+.show-card h3{
+    font-weight: 550;
+}
+
+/* scrollbar customization
+::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+/* ::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    -webkit-box-shadow: inset 0 0 2px rgba(255, 33, 48, 0.7); 
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #fe424d;
+    -webkit-box-shadow: inset 0 0 2px rgba(255,33,48,0.7); 
+}  */
+
+/* .login{
+    margin-left: 36rem;
+} */
+/* Map */
+#map {
+    height:23rem;
+    width: 77vh;
+  }
+
+.btn-search{
+    background-color: #fe424d !important;
+    color:white !important;
+    border-radius: 9rem !important;
+    padding: 0 1rem 0 1rem !important;
+    height: 2.5rem !important;
+}
+.btn-search:hover{
+    background-color: #fe424d !important;
+    color:white !important;
+}
+.search-inp{
+    border-radius: 9rem !important;
+    padding: 0.5rem 1.5rem 0.5rem 3rem !important;
+}
