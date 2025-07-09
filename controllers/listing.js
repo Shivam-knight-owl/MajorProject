@@ -7,10 +7,25 @@ const maptilerClient=require("@maptiler/client");
 // add your API key
 maptilerClient.config.apiKey = mapKey;
 
-module.exports.index=async(req,res)=>{
-    const allListings=await Listing.find({});
-    res.render("./listings/index.ejs",{ allListings });
-}
+// module.exports.index=async(req,res)=>{
+//     const allListings=await Listing.find({});
+//     res.render("./listings/index.ejs",{ allListings });
+// }
+module.exports.index = async (req, res) => {
+    const { q } = req.query;
+    let filter = {};
+    if (q) {
+        filter = {
+            $or: [
+                { title: { $regex: q, $options: "i" } },
+                { location: { $regex: q, $options: "i" } },
+                { country: { $regex: q, $options: "i" } }
+            ]
+        };
+    }
+    const allListings = await Listing.find(filter);
+    res.render("listings/index", { allListings });
+};
 
 module.exports.renderNewForm=(req,res)=>{
     console.log(req.user);

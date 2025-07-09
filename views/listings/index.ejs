@@ -86,6 +86,9 @@
             </div>
         </div>
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <% if (allListings.length === 0) { %>
+                <div class="alert alert-warning mx-auto text-center">No such listing found.</div>
+            <% } %>
             <%for(let listing of allListings){%>
                 <a href="/listings/<%=listing.id%>" class="listing-link">
                     <div class="card listing-card">

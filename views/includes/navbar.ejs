@@ -17,12 +17,9 @@
 
             <div class="navbar-nav ms-auto">
                 <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations">
-                      <button class="btn btn-search" type="submit">
-                        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                        Search
-                    </button>
+                    <form class="d-flex" role="search" action="/listings" method="GET">
+                        <input class="form-control me-2 search-inp" type="search" name="q" placeholder="Search Listings">
+                        <button class="btn btn-search" type="submit">Search</button>
                     </form>
                 </div>
             </div>

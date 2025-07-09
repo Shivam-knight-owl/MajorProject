@@ -13,6 +13,7 @@ const wrapAsync=require("./utils/wrapAsync.js");
 const ExpressError=require("./utils/ExpressError.js");
 const {listingSchema,reviewSchema}=require("./schema.js");
 const Review=require("./models/reviews.js");
+const rateLimit = require('express-rate-limit');
 
 const listingRouter=require("./routes/listing.js");
 const reviewRouter=require("./routes/reviews.js");
@@ -26,6 +27,29 @@ const LocalStrategy=require("passport-local");
 const userSchema=require("./models/user.js");
 const User = require("./models/user.js");
 
+// Rate limiter 
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20, // limit each IP to 20 requests per windowMs
+  message: {
+    error: 'Too many requests from this IP, please try again after a minute.'
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (req, res) => {
+    if (req.accepts('html')) {
+      const rateLimitError = {
+        statusCode: 429,
+        message: 'Too many requests from this IP, please try again after a minute.'
+      };
+      res.status(429).render('error.ejs', { err: rateLimitError });
+    } else {
+      res.status(429).json({
+        error: 'Too many requests from this IP, please try again after a minute.'
+      });
+    }
+  }
+});
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -51,6 +75,10 @@ async function main(){
 // app.get("/",(req,res)=>{
 //     res.send("Hi,i am root");
 // });
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 
 const store=MongoStore.create({
     mongoUrl:dbURL,
@@ -92,6 +120,9 @@ app.use((req,res,next)=>{
     res.locals.currUser=req.user;
     next();
 });
+
+// Apply rate limiter after locals are set
+app.use(limiter);
 
 // app.get("/demouser",async(req,res)=>{
 //     let fakeUser=new User({
@@ -231,7 +262,7 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs",{err});
     //res.status(statusCode).send(message);
 });
-
-app.listen("8080",()=>{
+const port = process.env.PORT || 8080;
+app.listen(port,()=>{
     console.log("server is listening on port 8080");
 });
